@@ -10,6 +10,7 @@ target/
 .idea/compiler.xml
 .idea/libraries/
 .idea/workspace.xml    <-- ¡Recomendado añadir esta línea!
+.idea/vcs.xml
 *.iws
 *.iml
 *.ipr
