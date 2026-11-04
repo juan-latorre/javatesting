@@ -14,4 +14,14 @@ public class StringUtil {
 
         return str.repeat(times);
     }
+
+    /**
+     * Evalúa si un string está vacío, es nulo o contiene solo espacios en blanco.
+     *
+     * @param str la cadena a evaluar
+     * @return true si es null, si tiene longitud 0 o si tras aplicar trim() queda vacía; false en caso contrario.
+     */
+    public static boolean isEmpty(String str) {
+        return str == null || str.trim().isEmpty();
+    }
 }

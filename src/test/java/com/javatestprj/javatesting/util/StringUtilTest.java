@@ -39,4 +39,42 @@ public class StringUtilTest {
       StringUtil.repeat("abc", -1);
     });
   }
+
+  //String Empty Test
+
+  @Test
+  void testIsEmpty_whenStringIsNotEmpty_returnsFalse() {
+    // Arrange & Act
+    boolean result = StringUtil.isEmpty("Hola Mundo");
+
+    // Assert
+    assertFalse(result, "Una cadena con caracteres no debe considerarse vacía.");
+  }
+
+  @Test
+  void testIsEmpty_whenStringIsEmpty_returnsTrue() {
+    // Arrange & Act
+    boolean result = StringUtil.isEmpty("");
+
+    // Assert
+    assertTrue(result, "Una cadena vacía \"\" debe considerarse vacía.");
+  }
+
+  @Test
+  void testIsEmpty_whenStringIsNull_returnsTrue() {
+    // Arrange & Act
+    boolean result = StringUtil.isEmpty(null);
+
+    // Assert
+    assertTrue(result, "Un valor null debe considerarse vacío.");
+  }
+
+  @Test
+  void testIsEmpty_whenStringContainsOnlySpaces_returnsTrue() {
+    // Arrange & Act (Extra: espacios en blanco)
+    boolean result = StringUtil.isEmpty("   ");
+
+    // Assert
+    assertTrue(result, "Una cadena con solo espacios en blanco debe considerarse vacía tras trim().");
+  }
 }
