@@ -1,9 +1,9 @@
 package com.javatestprj.javatesting.util;
 
-import com.javatestprj.javatesting.Payments.PaymentGateway;
-import com.javatestprj.javatesting.Payments.PaymentProcessor;
-import com.javatestprj.javatesting.Payments.PaymentRequest;
-import com.javatestprj.javatesting.Payments.PaymentResponse;
+import com.javatestprj.javatesting.payments.PaymentGateway;
+import com.javatestprj.javatesting.payments.PaymentProcessor;
+import com.javatestprj.javatesting.payments.PaymentRequest;
+import com.javatestprj.javatesting.payments.PaymentResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

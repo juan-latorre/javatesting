@@ -1,4 +1,4 @@
-package com.javatestprj.javatesting.Payments;
+package com.javatestprj.javatesting.payments;
 
 public class PaymentProcessor {
 
