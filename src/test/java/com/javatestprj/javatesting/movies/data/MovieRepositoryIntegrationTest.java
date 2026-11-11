@@ -2,6 +2,7 @@ package com.javatestprj.javatesting.movies.data;
 
 import com.javatestprj.javatesting.movies.model.Genre;
 import com.javatestprj.javatesting.movies.model.Movie;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -14,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MovieRepositoryIntegrationTest {
     private MovieRepositoryJdbc movieRepository;
+    private JdbcTemplate jdbcTemplate; // Atributo de clase
 
     @BeforeEach
     void setUp() {
@@ -24,8 +26,17 @@ class MovieRepositoryIntegrationTest {
         dataSource.setUsername("platzi");
         dataSource.setPassword("platzi");
 
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        movieRepository = new MovieRepositoryJdbc(jdbcTemplate);
+        // ✅ Sin "JdbcTemplate" al inicio:
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.movieRepository = new MovieRepositoryJdbc(this.jdbcTemplate);
+    }
+
+    @AfterEach
+    void tearDown() {
+        // Borra cualquier película insertada con ID mayor a 6
+        jdbcTemplate.execute("DELETE FROM movies WHERE id > 6");
+        // Reinicia el contador autoincremental a 7 para que futuros inserts siempre tomen ID 7
+        jdbcTemplate.execute("ALTER TABLE movies AUTO_INCREMENT = 7");
     }
 
     @Test
@@ -51,5 +62,19 @@ class MovieRepositoryIntegrationTest {
         Movie movie = movieRepository.findById(2);
 
         assertEquals(new Movie(2, "Matrix", 136, Genre.ACTION), movie);
+    }
+
+    @Test
+    void insert_a_movie() {
+        Movie movie = new Movie("Super 8 - Edición Especial", 112, Genre.THRILLER);
+
+        movieRepository.saveOrUpdate(movie);
+
+        Movie movieFromDb = movieRepository.findById(7);
+
+        assertEquals(
+                new Movie(7, "Super 8 - Edición Especial", 112, Genre.THRILLER),
+                movieFromDb
+        );
     }
 }
