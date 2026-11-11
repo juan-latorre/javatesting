@@ -11,6 +11,8 @@ target/
 .idea/libraries/
 .idea/workspace.xml    <-- ¡Recomendado añadir esta línea!
 .idea/vcs.xml
+.idea/dataSources.xml
+.idea/inspectionProfiles/
 *.iws
 *.iml
 *.ipr

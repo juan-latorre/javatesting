@@ -32,6 +32,21 @@
             <version>2.2</version>
             <scope>test</scope>
         </dependency>
+        <!-- Spring JDBC en su versión 6 (diseñada para Java 17 y 21) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>6.1.14</version>
+        </dependency>
+
+        <!-- Driver de MySQL actualizado (compatible con tu servidor MySQL 8.4) -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.4.0</version>
+            <scope>test</scope>
+        </dependency>
+
    </dependencies>
 
 
